@@ -6,9 +6,9 @@
 
 <ion-content padding>
 
-  <h3 text-center *ngIf="loadItems().length === 0">No item availible on the list!</h3>
+  <h3 class = "no-item" text-center *ngIf="loadItems().length === 0">No item availible on the list!</h3>
 
-  <ion-list><nav></nav>
+  <ion-list>
     <ion-item-sliding *ngFor="let item of loadItems(); let i = index">
       <!--let item of items is calling JS array, let i = index provides number for index-->
       <ion-item>
@@ -21,9 +21,13 @@
       <ion-item-options>
 
         <button (click)="editItem(item, i)" ion-button color="primary" icon-start>
-          <!--in the click function of removeItems(item, i), we are passing in the item and the index-->
           <ion-icon name="create"></ion-icon>
           Edit
+        </button>
+
+        <button (click)="shareItem(item, i)" ion-button color="light" icon-start>
+          <ion-icon name="share"></ion-icon>
+          Share
         </button>
 
         <button (click)="removeItem(item, i)" ion-button color="danger" icon-start>
@@ -32,10 +36,9 @@
           Delete
         </button>
 
-
-
       </ion-item-options>
     </ion-item-sliding>
+  </ion-list>
 
     <ion-fab right bottom>
       <button (click)="addItem()" ion-fab>
@@ -43,8 +46,8 @@
       </button>
     </ion-fab>
 
+</ion-content>
 
-  </ion-list>
 
 
 
